@@ -1,6 +1,6 @@
 #include <iostream>
-#include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 using namespace std;
 
 bool Closing = false;
@@ -8,7 +8,8 @@ bool Closing = false;
 class Commands {
   public:
    void clear() {
-     cout << "\x1B[2J\x1B[H";
+     system("clear");
+     //cout << "\x1B[2J\x1B[H";
    }
    void help() {
      cout << "--------" << endl;
@@ -23,7 +24,7 @@ class Commands {
    }
 };
 
-int main(int argc, char** argv[]) {
+int main(int argc, char* argv[]) {
   Commands Actions;
   string inp;
 
@@ -41,7 +42,11 @@ int main(int argc, char** argv[]) {
     } else if (inp == "exit") {
       Actions.exit();
     } else if (inp == "between") {
-      
+      if (argc == 2) {
+        int x = strtol(argv[2], NULL, 10);
+        int y = strtol(argv[3], NULL, 10);
+        cout << Actions.between(x, y) << endl;
+      }
     } else {
       cout << "Unknown Command: " + inp << endl;
     }
