@@ -13,7 +13,10 @@ class Commands {
    void help() {
      cout << "--------" << endl 
      << "-+*/= Formula Terminal =/*+-" << endl;
-     cout << "clear - Clears this prompt" << endl << "help - List of all commands" << endl << "exit - Exits this prompt" << endl;
+     cout << "clear - Clears this prompt" << endl
+     << "help - List of all commands" << endl
+     << "exit - Exits this prompt" << endl
+     << "between [x] [y] - Finds the number between 2 values" << endl;
      cout << "--------" << endl;
    }
    void exit() {
@@ -24,7 +27,7 @@ class Commands {
    }
 };
 
-int main(int argc, char* argv[]) {
+int main(int argc, char** argv) {
   Commands Actions;
 
   Actions.clear(); //Clear once the console is launched
@@ -34,7 +37,7 @@ int main(int argc, char* argv[]) {
     string inp;
     cin >> inp;
 
-    if (inp == "help") {
+    if (inp == "help" || inp == "quit") {
       Actions.help();
     } else if (inp == "clear") {
       Actions.clear();
@@ -43,7 +46,9 @@ int main(int argc, char* argv[]) {
     } else if (inp == "between") {
       int x = strtol(argv[1], NULL, 10);
       int y = strtol(argv[2], NULL, 10);
-      cout << Actions.between(x, y) << endl;
+      for (int i = 0; i < argc; ++i) {
+        cout << argv[i] << endl;
+      }
     } else {
       cout << "Unknown Command: " + inp << endl;
     }
