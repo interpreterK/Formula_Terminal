@@ -9,10 +9,10 @@ class Commands {
   public:
    void clear() {
      system("clear");
-     //cout << "\x1B[2J\x1B[H";
    }
    void help() {
-     cout << "--------" << endl;
+     cout << "--------" << endl 
+     << "-+*/= Formula Terminal =/*+-" << endl;
      cout << "clear - Clears this prompt" << endl << "help - List of all commands" << endl << "exit - Exits this prompt" << endl;
      cout << "--------" << endl;
    }
@@ -26,13 +26,12 @@ class Commands {
 
 int main(int argc, char* argv[]) {
   Commands Actions;
-  string inp;
 
-  Actions.clear(); //Clear once the console is launched.
-  cout << "--------" << endl << "-+*/= Formula Terminal =/*+-" << endl;
-  Actions.help(); //List the commands once the console is opened.
-
+  Actions.clear(); //Clear once the console is launched
+  Actions.help(); //List the commands once the console is opened
   do {
+    cout << "> "; //Enter input context symbol
+    string inp;
     cin >> inp;
 
     if (inp == "help") {
@@ -42,11 +41,9 @@ int main(int argc, char* argv[]) {
     } else if (inp == "exit") {
       Actions.exit();
     } else if (inp == "between") {
-      if (argc == 2) {
-        int x = strtol(argv[2], NULL, 10);
-        int y = strtol(argv[3], NULL, 10);
-        cout << Actions.between(x, y) << endl;
-      }
+      int x = strtol(argv[1], NULL, 10);
+      int y = strtol(argv[2], NULL, 10);
+      cout << Actions.between(x, y) << endl;
     } else {
       cout << "Unknown Command: " + inp << endl;
     }
