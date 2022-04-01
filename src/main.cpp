@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
     string inp;
     cin >> inp;
 
-    if (inp == "help" || inp == "quit") {
+    if (inp == "help") {
       Actions.help();
     } else if (inp == "clear") {
       Actions.clear();
